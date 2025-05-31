@@ -13,9 +13,26 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 
+// Rutas publicas
 Route::get('/', function () {
     return Inertia::render('welcome');
 })->name('home');
+
+Route::get('/about', function () {
+    return Inertia::render('about');
+})->name('about');
+
+Route::get('/features', function () {
+    return Inertia::render('features');
+})->name('features');
+
+Route::get('/plans', function () {
+    return Inertia::render('plans');
+})->name('plans');
+
+Route::get('/contact', function () {
+    return Inertia::render('contact');
+})->name('contact');
 
 // Rutas para usuarios autenticados
 Route::middleware(['auth', 'verified'])->group(function () {
