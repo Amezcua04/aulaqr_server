@@ -19,4 +19,12 @@ class Docente extends Model
         'materno',
         'estado'
     ];
+
+    public function asignacionDocente(){
+        return $this->hasMany(AsignacionDocente::class, 'docente_id');
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class); 
+    }
 }

@@ -22,6 +22,11 @@ class DatabaseSeeder extends Seeder
             DocenteSeeder::class,
             MateriaSeeder::class,
             EstudianteSeeder::class,
+            DiaSeeder::class,
+            HorarioSeeder::class,
+            HorarioDiaSeeder::class,
+            AsignacionDocenteSeeder::class,
+            AsistenciaSeeder::class,
         ]);
     }
 }

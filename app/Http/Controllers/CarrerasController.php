@@ -13,7 +13,7 @@ class CarrerasController extends Controller
    */
   public function index()
   {
-    $carreras = Carreras::orderBy('id', 'asc')->get();
+    $carreras = Carreras::orderBy('id', 'asc')->paginate(5);
     return Inertia::render('carreras/index', [
       'carreras' => $carreras
     ]);

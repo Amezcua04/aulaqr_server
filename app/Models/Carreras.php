@@ -10,6 +10,7 @@ class Carreras extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'carreras';
     protected $fillable = ['nombre', 'estado'];
 
     public function grupos()

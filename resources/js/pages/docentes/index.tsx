@@ -14,6 +14,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import DeleteButton from '@/components/delete-button';
+import Pagination from '@/components/pagination';
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
@@ -106,19 +107,7 @@ export default function Docentes({ docentes }: { docentes: DocentesPagination })
                 </TableBody>
               </Table>
             </div>
-            <div className="flex justify-end mt-4 flex-wrap gap-2">
-              {docentes.links.map((link, i) => (
-                <Link
-                  key={i}
-                  href={link.url ?? '#'}
-                  className={`px-3 py-1 rounded text-sm border ${link.active
-                    ? 'bg-black text-white'
-                    : 'hover:bg-gray-100 text-gray-700'
-                    } ${!link.url && 'pointer-events-none opacity-50'}`}
-                  dangerouslySetInnerHTML={{ __html: link.label }}
-                />
-              ))}
-            </div>
+            <Pagination links={docentes.links} />
           </CardContent>
         </Card>
       </div>

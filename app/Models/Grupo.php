@@ -22,6 +22,10 @@ class Grupo extends Model
     }
 
     public function estudiantes(){
-        return $this->hasMany(Estudiante::class);
+        return $this->hasMany(Estudiante::class, 'grupo_id');
+    }
+
+    public function asignacionDocente(){
+        return $this->hasMany(AsignacionDocente::class, 'grupo_id');
     }
 }

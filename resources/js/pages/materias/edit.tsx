@@ -80,7 +80,7 @@ export default function EditMateria({ materia }: { materia: Materia }) {
                     value={data.estado}
                     onValueChange={(value) => setData('estado', value)}
                   >
-                    <SelectTrigger id="estado">
+                    <SelectTrigger id="estado" className='cursor-pointer'>
                       <SelectValue placeholder="Selecciona un estado" />
                     </SelectTrigger>
                     <SelectContent>

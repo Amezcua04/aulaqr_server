@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Docente;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,7 +23,8 @@ class DocenteFactory extends Factory
             'nombre' => $this->faker->firstName(),
             'paterno' => $this->faker->lastName(),
             'materno' => $this->faker->lastName(),
-            'estado' => true
+            'estado' => true,
+            'user_id' => User::inRandomOrder()->first()->id ?? User::factory(),
         ];
     }
 }

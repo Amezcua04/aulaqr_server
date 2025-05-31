@@ -33,6 +33,12 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        $user = $request->user();
+
+        if ($user->role === 'maestro') {
+            return redirect()->route('clases.index');
+        }
+
         return redirect()->intended(route('dashboard', absolute: false));
     }
 

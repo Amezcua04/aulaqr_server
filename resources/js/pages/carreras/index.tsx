@@ -14,6 +14,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import DeleteButton from '@/components/delete-button';
+import Pagination from '@/components/pagination';
 
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -33,7 +34,19 @@ interface Carrera {
   estado: boolean;
 }
 
-export default function Carreras({ carreras }: { carreras: Carrera[] }) {
+interface PaginationLink {
+  url: string | null;
+  label: string;
+  active: boolean;
+}
+
+interface CarrerasPagination {
+  data: Carrera[];
+  links: PaginationLink[];
+}
+
+
+export default function Carreras({ carreras }: { carreras: CarrerasPagination }) {
   return (
     <AppLayout breadcrumbs={breadcrumbs}>
       <Head title="Carreras" />
@@ -64,14 +77,14 @@ export default function Carreras({ carreras }: { carreras: Carrera[] }) {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {carreras.length === 0 ? (
+                  {carreras.data?.length === 0 ? (
                     <TableRow>
                       <TableCell colSpan={4} className="text-center py-6">
                         No hay carreras registradas.
                       </TableCell>
                     </TableRow>
                   ) : (
-                    carreras.map((carrera) => (
+                    carreras.data.map((carrera) => (
                       <TableRow key={carrera.id}>
                         <TableCell className="font-medium">{carrera.id}</TableCell>
                         <TableCell>{carrera.nombre}</TableCell>
@@ -94,6 +107,7 @@ export default function Carreras({ carreras }: { carreras: Carrera[] }) {
                 </TableBody>
               </Table>
             </div>
+            <Pagination links={carreras.links} />
           </CardContent>
         </Card>
       </div>

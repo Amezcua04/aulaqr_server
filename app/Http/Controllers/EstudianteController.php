@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Estudiante;
+use App\Models\Grupo;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -13,7 +14,7 @@ class EstudianteController extends Controller
      */
     public function index()
     {
-        $estudiantes = Estudiante::with('estudiante')->orderBy('id', 'asc')->paginate(10);
+        $estudiantes = Estudiante::with('grupo')->orderBy('id', 'asc')->paginate(10);
         return Inertia::render('estudiantes/index', [
             'estudiantes' => $estudiantes
         ]);
@@ -24,7 +25,9 @@ class EstudianteController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('estudiantes/create', [
+            'grupos' => Grupo::orderBy('nombre')->get()
+        ]);
     }
 
     /**
@@ -32,7 +35,18 @@ class EstudianteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nombre' => 'required|string|max:100',
+            'paterno' => 'required|string|max:50',
+            'materno' => 'required|string|max:50',
+            'matricula' => 'required|string|max:20|unique:estudiantes,matricula',
+            'celular' => 'required|digits:10',
+            'grupo_id' => 'required|exists:grupos,id'
+        ]);
+
+        Estudiante::create($validated);
+
+        return redirect()->route('estudiantes.index')->with('success', 'Estudiante creado con éxito.');
     }
 
     /**
@@ -48,7 +62,10 @@ class EstudianteController extends Controller
      */
     public function edit(Estudiante $estudiante)
     {
-        //
+        return Inertia::render('estudiantes/edit', [
+            'estudiante' => $estudiante,
+            'grupos' => Grupo::orderBy('id')->get(),
+        ]);
     }
 
     /**
@@ -56,7 +73,18 @@ class EstudianteController extends Controller
      */
     public function update(Request $request, Estudiante $estudiante)
     {
-        //
+        $validated = $request->validate([
+            'nombre' => 'required|string|max:100',
+            'paterno' => 'required|string|max:50',
+            'materno' => 'required|string|max:50',
+            'matricula' => 'required|string|max:20|unique:estudiantes,matricula,' . $estudiante->id,
+            'celular' => 'required|digits:10',
+            'grupo_id' => 'required|exists:grupos,id'
+        ]);
+
+        $estudiante->update($validated);
+
+        return redirect()->route('estudiantes.index')->with('success', 'Estudiante actualizado con éxito.');
     }
 
     /**

@@ -115,7 +115,7 @@ export default function EditGrupo({ grupo, carreras }: { grupo: Grupo; carreras:
                                     value={data.carrera_id}
                                     onValueChange={(value) => setData('carrera_id', value)}
                                 >
-                                    <SelectTrigger id='carrera_id'>
+                                    <SelectTrigger id='carrera_id' className='cursor-pointer'>
                                         <SelectValue placeholder="Selecciona una carrera" />
                                     </SelectTrigger>
                                     <SelectContent>
