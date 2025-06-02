@@ -56,7 +56,7 @@ class MateriaController extends Controller
      */
     public function edit(Materia $materia)
     {
-        return Inertia::render('materia/edit', [
+        return Inertia::render('materias/edit', [
             'materia' => $materia
         ]);
     }
@@ -72,7 +72,7 @@ class MateriaController extends Controller
         ]);
         $validated['estado'] = filter_var($validated['estado'], FILTER_VALIDATE_BOOLEAN);
 
-        Materia::update($validated);
+        $materia->update($validated);
 
         return redirect()->route('materias.index')->with('success', 'Materia actualizada con éxito.');
     }

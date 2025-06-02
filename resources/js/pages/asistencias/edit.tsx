@@ -127,7 +127,7 @@ export default function EditAsistencia({ asistencia, asignaciones, estudiantes }
 
               <div className="flex justify-end">
                 <Button type="submit" disabled={processing}>
-                  {processing ? 'Guardando...' : 'Guardar'}
+                  {processing ? 'Actualizando...' : 'Actualizar'}
                 </Button>
               </div>
             </form>

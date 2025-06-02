@@ -172,7 +172,7 @@ export default function EditarEstudiante({ estudiante, grupos }: Props) {
 
                             <div className="flex justify-end pt-4">
                                 <Button type="submit" disabled={processing} className='cursor-pointer'>
-                                    {processing ? 'Guardando...' : 'Guardar'}
+                                    {processing ? 'Actualizando...' : 'Actualizar'}
                                 </Button>
                             </div>
                         </form>

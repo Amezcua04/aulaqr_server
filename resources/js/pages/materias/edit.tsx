@@ -16,10 +16,19 @@ import {
 import { toast } from 'sonner';
 import React from 'react';
 
-const breadcrumbs = (materiaNombre: string): BreadcrumbItem[] => [
-  { title: 'Dashboard', href: '/dashboard' },
-  { title: 'Materias', href: '/materias' },
-  { title: materiaNombre, href: '#' },
+const breadcrumbs: BreadcrumbItem[] = [
+	{
+		title: 'Dashboard',
+		href: '/dashboard',
+	},
+	{
+		title: 'Materias',
+		href: '/materias',
+	},
+	{
+		title: 'Editar',
+		href: '/materias/edit',
+	},
 ];
 
 interface Materia {
@@ -42,8 +51,8 @@ export default function EditMateria({ materia }: { materia: Materia }) {
   };
 
   return (
-    <AppLayout breadcrumbs={breadcrumbs(materia.nombre)}>
-      <Head title={`Editar Materia: ${materia.nombre}`} />
+    <AppLayout breadcrumbs={breadcrumbs}>
+      <Head title="Editar Materia" />
       <div className="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
         <Card>
           <CardHeader>
@@ -93,7 +102,7 @@ export default function EditMateria({ materia }: { materia: Materia }) {
               </div>
 
               <div className="flex justify-end">
-                <Button type="submit" disabled={processing}>
+                <Button type="submit" disabled={processing} className='cursor-pointer'>
                   {processing ? 'Actualizando...' : 'Actualizar'}
                 </Button>
               </div>

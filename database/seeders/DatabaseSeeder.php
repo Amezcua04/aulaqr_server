@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             HorarioDiaSeeder::class,
             AsignacionDocenteSeeder::class,
             AsistenciaSeeder::class,
+            TareaSeeder::class
         ]);
     }
 }

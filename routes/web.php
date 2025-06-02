@@ -8,6 +8,7 @@ use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\GrupoController;
 use App\Http\Controllers\MateriaController;
+use App\Http\Controllers\TareaController;
 use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -41,6 +42,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::middleware(['role:maestro'])->group(function () {
         Route::get('/clases', [ClaseController::class, 'index'])->name('clases.index');
         Route::resource('asistencias', AsistenciaController::class);
+        Route::resource('tareas', TareaController::class);
     });
 
     // Rutas para coordinador y admin

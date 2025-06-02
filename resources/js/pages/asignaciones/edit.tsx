@@ -164,7 +164,7 @@ export default function EditAsignacion({ asignacion, docentes, materias, grupos,
 
               <div className="flex justify-end">
                 <Button type="submit" disabled={processing} className="cursor-pointer">
-                  {processing ? 'Guardando...' : 'Guardar'}
+                  {processing ? 'Actualizando...' : 'Actualizar'}
                 </Button>
               </div>
             </form>

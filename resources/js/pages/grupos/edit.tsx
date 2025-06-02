@@ -131,7 +131,7 @@ export default function EditGrupo({ grupo, carreras }: { grupo: Grupo; carreras:
 
                             <div className="flex justify-end">
                                 <Button type="submit" disabled={processing} className='cursor-pointer'>
-                                    {processing ? 'Guardando...' : 'Guardar'}
+                                    {processing ? 'Actualizando...' : 'Actualizar'}
                                 </Button>
                             </div>
                         </form>

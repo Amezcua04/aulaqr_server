@@ -104,7 +104,7 @@ export default function EditCarrera({ carrera }: { carrera: Carrera }) {
 							</div>
 							<div className="flex justify-end">
 								<Button type="submit" disabled={processing} className='cursor-pointer'>
-									{processing ? 'Guardando...' : "Guardar"}
+									{processing ? 'Actualizando...' : 'Actualizar'}
 								</Button>
 							</div>
 						</form>

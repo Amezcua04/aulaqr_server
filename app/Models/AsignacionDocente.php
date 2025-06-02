@@ -39,7 +39,13 @@ class AsignacionDocente extends Model
         return $this->belongsTo(HorarioDia::class);
     }
 
-    public function asistencia(){
+    public function asistencia()
+    {
         return $this->hasMany(Asistencia::class, 'asignacion_docente_id');
+    }
+
+    public function tareas()
+    {
+        return $this->hasMany(Tarea::class, 'asignacion_docente_id');
     }
 }
