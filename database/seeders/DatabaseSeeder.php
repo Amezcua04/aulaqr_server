@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\RevisionTareas;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -27,7 +28,8 @@ class DatabaseSeeder extends Seeder
             HorarioDiaSeeder::class,
             AsignacionDocenteSeeder::class,
             AsistenciaSeeder::class,
-            TareaSeeder::class
+            TareaSeeder::class,
+            RevisionTareasSeeder::class
         ]);
     }
 }

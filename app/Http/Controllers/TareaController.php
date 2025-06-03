@@ -17,10 +17,11 @@ class TareaController extends Controller
     {
         $docenteId = Auth::user()->docente->id;
 
-        $tareas = Tarea::with(['asignacion.materia', 'asignacion.grupo'])
-            ->whereHas('asignacion', fn($q) => $q->where('docente_id', $docenteId))
+        $tareas = Tarea::with(['asignacionDocente.materia', 'asignacionDocente.grupo'])
+            ->whereHas('asignacionDocente', fn($q) => $q->where('docente_id', $docenteId))
             ->latest()
             ->paginate(10);
+
 
         return Inertia::render('tareas/index', [
             'tareas' => $tareas,

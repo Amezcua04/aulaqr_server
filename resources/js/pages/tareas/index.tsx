@@ -27,7 +27,7 @@ interface Tarea {
     id: number;
     descripcion: string;
     fecha_entrega: string;
-    asignacion: {
+    asignacion_docente: {
         materia: { nombre: string };
         grupo: { nombre: string };
     };
@@ -56,8 +56,8 @@ export default function Tareas({ tareas }: { tareas: TareasPagination }) {
         return tareas.data.filter((tarea) => {
             return (
                 tarea.descripcion.toLowerCase().includes(filters.descripcion.toLowerCase()) &&
-                tarea.asignacion.materia.nombre.toLowerCase().includes(filters.materia.toLowerCase()) &&
-                tarea.asignacion.grupo.nombre.toLowerCase().includes(filters.grupo.toLowerCase()) &&
+                tarea.asignacion_docente.materia.nombre.toLowerCase().includes(filters.materia.toLowerCase()) &&
+                tarea.asignacion_docente.grupo.nombre.toLowerCase().includes(filters.grupo.toLowerCase()) &&
                 tarea.fecha_entrega.includes(filters.fecha_entrega)
             );
         });
@@ -68,7 +68,7 @@ export default function Tareas({ tareas }: { tareas: TareasPagination }) {
             <Head title="Tareas" />
             <div className="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
                 <div className='flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2'>
-                    <h1 className='text-2xl font-bold'>Carreras</h1>
+                    <h1 className='text-2xl font-bold'>Tareas</h1>
                     <Link href='/tareas/create'>
                         <Button className='cursor-pointer'>
                             <PlusIcon className='w-4 h-4 mr-2' />
@@ -137,13 +137,13 @@ export default function Tareas({ tareas }: { tareas: TareasPagination }) {
                                             <TableRow key={tarea.id}>
                                                 <TableCell>{tarea.id}</TableCell>
                                                 <TableCell>{tarea.descripcion}</TableCell>
-                                                <TableCell>{tarea.asignacion.materia.nombre}</TableCell>
-                                                <TableCell>{tarea.asignacion.grupo.nombre}</TableCell>
+                                                <TableCell>{tarea.asignacion_docente.materia.nombre}</TableCell>
+                                                <TableCell>{tarea.asignacion_docente.grupo.nombre}</TableCell>
                                                 <TableCell>{tarea.fecha_entrega}</TableCell>
                                                 <TableCell className="text-right">
                                                     <div className="flex gap-2 justify-end flex-wrap">
-                                                        <Link href={`/tareas/${tarea.id}/edit`}>
-                                                            <Button variant="outline" size="icon">
+                                                        <Link href={`/revisiones/create?tarea_id=${tarea.id}`}>
+                                                            <Button variant="outline" size="icon" className="cursor-pointer">
                                                                 <ScanQrCodeIcon className="w-4 h-4" />
                                                             </Button>
                                                         </Link>

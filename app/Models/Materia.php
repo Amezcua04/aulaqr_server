@@ -18,7 +18,8 @@ class Materia extends Model
         'estado',
     ];
 
-    public function asignacionDocente(){
+    public function asignacionDocente()
+    {
         return $this->hasMany(AsignacionDocente::class, 'materia_id');
     }
 }

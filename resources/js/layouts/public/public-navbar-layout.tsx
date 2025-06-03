@@ -28,7 +28,7 @@ export default function MainLayout({ children }: Props) {
                 <div className="flex gap-3">
                     {auth.user ? (
                         <Link
-                            href={route('dashboard')}
+                            href={auth.user.role === 'maestro' ? route('clases.index') : route('dashboard')}
                             className="inline-block rounded-sm border border-border px-5 py-1.5 text-sm leading-normal hover:border-muted"
                         >
                             Dashboard

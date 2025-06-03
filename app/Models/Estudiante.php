@@ -22,11 +22,18 @@ class Estudiante extends Model
         'grupo_id',
     ];
 
-    public function grupo(){
+    public function grupo()
+    {
         return $this->belongsTo(Grupo::class);
     }
 
-    public function asistencia(){
+    public function asistencia()
+    {
         return $this->hasMany(Asistencia::class, 'estudiante_id');
+    }
+
+    public function revisiones()
+    {
+        return $this->hasMany(RevisionTareas::class, 'estudiante_id');
     }
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\GrupoController;
 use App\Http\Controllers\MateriaController;
+use App\Http\Controllers\RevisionTareasController;
 use App\Http\Controllers\TareaController;
 use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -41,8 +42,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Rutas para el maestro
     Route::middleware(['role:maestro'])->group(function () {
         Route::get('/clases', [ClaseController::class, 'index'])->name('clases.index');
+        // Route::resource('clases', ClaseController::class);
         Route::resource('asistencias', AsistenciaController::class);
         Route::resource('tareas', TareaController::class);
+        Route::resource('revisiones', RevisionTareasController::class);
     });
 
     // Rutas para coordinador y admin

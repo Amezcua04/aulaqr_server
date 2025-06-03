@@ -18,7 +18,13 @@ class Tarea extends Model
         'asignacion_docente_id',
     ];
 
-    public function asignacion(){
+    public function asignacionDocente()
+    {
         return $this->belongsTo(AsignacionDocente::class, 'asignacion_docente_id');
+    }
+
+    public function revisiones()
+    {
+        return $this->hasMany(RevisionTareas::class, 'tarea_id');
     }
 }
