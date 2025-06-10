@@ -8,6 +8,7 @@ use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\GrupoController;
 use App\Http\Controllers\MateriaController;
+use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\RevisionTareasController;
 use App\Http\Controllers\TareaController;
 use App\Http\Middleware\RoleMiddleware;
@@ -62,7 +63,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     //Rutas para el administrador
-    Route::middleware('role:admin')->group(function () {});
+    Route::middleware('role:admin')->group(function () {
+        Route::get('/reportes', [ReporteController::class, 'index'])->name('reportes.index');
+    });
 });
 
 require __DIR__ . '/settings.php';
